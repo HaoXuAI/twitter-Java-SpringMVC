@@ -1,0 +1,83 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.4.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("com.bertramlabs.plugins:asset-pipeline-gradle:2.12.1")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'asset-pipeline'
+
+jar {
+	baseName = 'challenge'
+	version = '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-jdbc')
+	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	runtime('org.springframework.boot:spring-boot-devtools')
+	
+	runtime('com.h2database:h2')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+clientDependencies {
+
+	bower {
+        'jquery'('2.2.x', from:'dist') { 
+            include 'jquery.js'
+			include 'jquery.min.js'
+        }
+		'materialize'('0.97.x', from:'dist', into:'materialize'){
+			include "**"
+		}		
+		
+    }
+	
+	npm {
+		'angular'('1.5.x', into: 'angular') {
+			include 'angular.js' 
+			include 'angular.min.js'
+		}
+		'angular-resource'('1.5.x', into: 'angular') {
+			include 'angular-resource.js'
+			include 'angular-resource.min.js'
+		}
+		'angular-mocks'('1.5.x', into: 'angular') {
+			include 'angular-mocks.js'
+			include 'angular-mocks.min.js'
+		}		
+		'angular-ui-router'('0.2.18', into: 'angular'){
+			include 'angular-ui-router.js'
+			include 'angular-ui-router.min.js'
+		}
+		'angular-animate'('1.5.x', into: 'angular') {
+			include 'angular-animate.js'
+			include 'angular-animate.min.js'
+		}
+		'angular-cookies'('1.5.x', into: 'angular') {
+			include 'angular-cookies.js'
+			include 'angular-cookies.min.js'
+		}
+        
+	}
+
+	
+}
