@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea
+.asscache
+.gradle/4.0/
+.gradle/buildOutputCleanup/
+build/assets/
+build/classes/java/
+build/client-cache/
+build/dependency-cache/
+build/resources/main/static/js/app.js
+build/tmp/compileJava/
+src/assets/
